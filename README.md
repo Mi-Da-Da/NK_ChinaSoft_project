@@ -45,4 +45,49 @@
   </tbody>
 </table>
 
+<h3>🛠️ 技术栈与工具 Tech Stack</h3>
+<table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; text-align:center; width:100%;">
+  <thead style="background-color:#f2f2f2;">
+    <tr>
+      <th><b>技术层级</b></th>
+      <th><b>技术选型</b></th>
+      <th><b>负责人</b></th>
+      <th><b>说明</b></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>模型</td>
+      <td>通义千问-7B + LoRA</td>
+      <td>裴家琪</td>
+      <td>本地化微调与推理优化</td>
+    </tr>
+    <tr>
+      <td>数据</td>
+      <td>MySQL + Redis</td>
+      <td>张津硕</td>
+      <td>结构化存储 + 实时缓存</td>
+    </tr>
+    <tr>
+      <td>后端</td>
+      <td>Flask + RESTful API</td>
+      <td>段俊宇</td>
+      <td>业务逻辑与接口开发</td>
+    </tr>
+    <tr>
+      <td>前端</td>
+      <td>Vue3 + ECharts</td>
+      <td>李相儒</td>
+      <td>攻略可视化与地图集成</td>
+    </tr>
+    <tr>
+      <td>运维</td>
+      <td>Docker + Prometheus</td>
+      <td>段俊宇 / 李相儒</td>
+      <td>容器化部署与监控</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
