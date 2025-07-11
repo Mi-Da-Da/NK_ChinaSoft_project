@@ -5,7 +5,7 @@
 实训单位：中软国际
 指导教师：吴迪
 🌟 基于通义千问的智能旅游攻略定制系统
-⏳ 项目周期：202X.XX-202X.XX | 👥 成员：段俊宇、裴家琪、张津硕、李相儒
+⏳ 项目周期：2025.6.30-2025.7.26 | 👥 成员：段俊宇、裴家琪、张津硕、李相儒
 
 <h3>📌 团队成员 Team Members</h3>
 <table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; text-align:center; width:100%;">
