@@ -33,14 +33,14 @@
     <tr>
       <td>张津硕</td>
       <td>后端 / 数据库</td>
-      <td>数据库设计、旅游数据爬取、API开发</td>
-      <td>数据库ER图、数据清洗脚本</td>
+      <td>数据库设计、旅游数据爬取</td>
+      <td>数据库ER图、含有数据的SQL脚本</td>
     </tr>
     <tr>
       <td>李相儒</td>
       <td>前端 / 测试</td>
-      <td>前端界面开发、用户测试、部署支持</td>
-      <td>交互原型图、性能优化建议</td>
+      <td>前端界面开发、用户测试</td>
+      <td>完整前端界面、性能优化建议</td>
     </tr>
   </tbody>
 </table>
@@ -58,15 +58,15 @@
   <tbody>
     <tr>
       <td>模型</td>
-      <td>通义千问-7B + LoRA</td>
+      <td>通义千问相关模型 + LoRA</td>
       <td>裴家琪</td>
       <td>本地化微调与推理优化</td>
     </tr>
     <tr>
       <td>数据</td>
-      <td>MySQL + Redis</td>
+      <td>Python + MySQL</td>
       <td>张津硕</td>
-      <td>结构化存储 + 实时缓存</td>
+      <td>爬取数据与结构化存储</td>
     </tr>
     <tr>
       <td>后端</td>
@@ -79,12 +79,6 @@
       <td>Vue3 + ECharts</td>
       <td>李相儒</td>
       <td>攻略可视化与地图集成</td>
-    </tr>
-    <tr>
-      <td>运维</td>
-      <td>Docker + Prometheus</td>
-      <td>段俊宇 / 李相儒</td>
-      <td>容器化部署与监控</td>
     </tr>
   </tbody>
 </table>
