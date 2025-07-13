@@ -10,35 +10,30 @@
   <thead style="background-color:#f2f2f2;">
     <tr>
       <th><b>成员</b></th>
-      <th><b>角色</b></th>
       <th><b>职责</b></th>
-      <th><b>交付物</b></th>
+      <th><b>学号</b></th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>段俊宇</td>
-      <td>组长 / 全栈开发</td>
-      <td>项目规划、前后端架构设计、通义千问API对接</td>
-      <td>系统架构文档、核心接口代码</td>
+      <td>项目规划、前后端架构设计、数据爬取与处理</td>
+      <td>2313815</td>
     </tr>
     <tr>
       <td>裴家琪</td>
-      <td>算法工程师</td>
       <td>大模型部署与微调、Prompt优化、推荐算法</td>
-      <td>微调模型权重、算法测试报告</td>
+      <td>2312207</td>
     </tr>
     <tr>
       <td>张津硕</td>
-      <td>后端 / 数据库</td>
-      <td>数据库设计、旅游数据爬取</td>
-      <td>数据库ER图、含有数据的SQL脚本</td>
+      <td>项目文档编写、项目成果展示</td>
+      <td>2312282</td>
     </tr>
     <tr>
       <td>李相儒</td>
-      <td>前端 / 测试</td>
       <td>前端界面开发、用户测试</td>
-      <td>完整前端界面、性能优化建议</td>
+      <td>2310591</td>
     </tr>
   </tbody>
 </table>
@@ -47,15 +42,13 @@
 <table border="1" cellspacing="0" cellpadding="8" style="border-collapse:collapse; text-align:center; width:100%;">
   <thead style="background-color:#f2f2f2;">
     <tr>
-      <th><b>技术层级</b></th>
-      <th><b>技术选型</b></th>
-      <th><b>负责人</b></th>
-      <th><b>说明</b></th>
+      <th><b>分类</b></th>
+      <th><b>技术</b></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>模型</td>
+      <td></td>
       <td>通义千问相关模型 + LoRA</td>
       <td>裴家琪</td>
       <td>本地化微调与推理优化</td>
@@ -63,13 +56,13 @@
     <tr>
       <td>数据</td>
       <td>Python + MySQL</td>
-      <td>张津硕</td>
+      <td>段俊宇</td>
       <td>爬取数据与结构化存储</td>
     </tr>
     <tr>
       <td>后端</td>
       <td>Flask + RESTful API</td>
-      <td>段俊宇</td>
+      <td>张津硕</td>
       <td>业务逻辑与接口开发</td>
     </tr>
     <tr>
@@ -100,11 +93,11 @@
     </tr>
     <tr>
       <td>第三周</td>
-      <td>大模型部署与微调、后端接口连接</td>
+      <td>大模型部署与微调、后端接口连接、前端界面设计</td>
     </tr>
     <tr>
       <td>第四周</td>
-      <td>前端界面设计、用户测试</td>
+      <td>用户测试、项目文档撰写与展示</td>
     </tr>
 </table>
 
