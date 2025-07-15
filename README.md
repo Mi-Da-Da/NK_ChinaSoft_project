@@ -1,10 +1,10 @@
 # 🌍 基于通义千问的旅游攻略定制系统
 
-![GitHub last commit](https://img.shields.io/github/last-commit/your-username/your-repo-name)
-![Stars](https://img.shields.io/github/stars/your-username/your-repo-name?style=social)
+![GitHub last commit](https://img.shields.io/github/last-commit/Mi-Da-Da/NK_ChinaSoft_project)
+![Stars](https://img.shields.io/github/stars/Mi-Da-Da/NK_ChinaSoft_project?style=social)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-> 🚀 本项目为 2025 年南开大学暑期实习实训项目，由中软国际指导。项目旨在利用大模型能力，实现个性化旅游攻略的自动推荐与定制。
+> 🚀 本项目由南开大学密码与网络空间安全学院 2023 级四名同学在中软国际实训平台完成，在老师的指导下，旨在深入掌握大语言模型的基本原理，并使用国产开源模型 通义千问 实现小型 LLM 的微调与部署。
 
 ---
 
@@ -33,7 +33,7 @@
 
 ## ⏳ 项目周期
 
-🗓️ 2025年6月30日 - 2025年7月26日  
+🗓️ 2025年6月30日 - 2025年7月25日  
 🏢 实训单位：中软国际  
 👨‍🏫 指导教师：吴迪  
 
@@ -85,7 +85,7 @@
 
 感谢南开大学与中软国际提供本次暑期实训平台，也感谢通义大模型的开放支持与 LoRA 微调框架的技术参考。
 
-> 📬 如有建议或合作意向，欢迎通过 [GitHub Issues](https://github.com/your-username/your-repo-name/issues) 与我们联系！
+> 📬 如有建议或合作意向，欢迎通过 [GitHub Issues](https://github.com/Mi-Da-Da/NK_ChinaSoft_project/issues) 与我们联系！
 
 ---
 
