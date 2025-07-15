@@ -2,7 +2,6 @@
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/Mi-Da-Da/NK_ChinaSoft_project)
 ![Stars](https://img.shields.io/github/stars/Mi-Da-Da/NK_ChinaSoft_project?style=social)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 > 🚀 本项目由南开大学密码与网络空间安全学院 2023 级四名同学在中软国际实训平台完成，在老师的指导下，旨在深入掌握大语言模型的基本原理，并使用国产开源模型 通义千问 实现小型 LLM 的微调与部署。
 
