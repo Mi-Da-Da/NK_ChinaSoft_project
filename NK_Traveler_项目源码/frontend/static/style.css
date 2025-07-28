@@ -1,0 +1,685 @@
+:root {
+    --main-blue: #6fabd1;
+    --main-blue-hover: #4e9ed4;
+    --bg-light: #f6fafd;
+    --bg-emphasis: #b3d8f6;
+    --sidebar-bg: #eaf4fb;
+    --bubble-user: #e3f1fb;
+    --bubble-bot: #eaf6ff;
+    --bubble-border: #b3d8f6;
+    --text-main: #23405a;
+    --text-light: #5a7fa6;
+    --avatar-user: #b3d8f6;
+    --avatar-bot: #d1e7f7;
+    --modal-bg: #fff;
+    --modal-border: #b3d8f6;
+    --menu-hover: #e3f1fb;
+    --cancel-btn: #b0b8c1;
+    --cancel-btn-hover: #8fa1b2;
+}
+
+body {
+    background: var(--bg-light);
+}
+
+.main-container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    background: var(--bg-light);
+}
+.sidebar {
+    flex: 0 0 240px;
+    min-width: 200px;
+    max-width: 320px;
+    height: 100vh;
+    background: var(--sidebar-bg);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.05);
+    border-radius: 0 16px 16px 0;
+    padding-right: 0;
+}
+.sidebar h2 {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+#session-list {
+    list-style: none;
+    padding: 0 0 0 0;
+    margin: 0 0 20px 0;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.session-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    cursor: pointer;
+    border-left: 4px solid transparent;
+    transition: background 0.2s, border-color 0.2s;
+    font-size: 16px;
+    background: transparent;
+    color: var(--text-main);
+}
+
+.session-item:hover {
+    background: var(--bg-emphasis);
+}
+
+.session-item.active {
+    background: var(--bg-emphasis);
+    border-left: 4px solid var(--main-blue);
+    font-weight: bold;
+    color: var(--text-main);
+}
+#new-session-btn {
+    margin: 0 20px 20px 20px;
+    background: var(--main-blue);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 0;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+#new-session-btn:hover {
+    background: var(--main-blue-hover);
+}
+
+.chat-container {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 40px 0 40px;
+    background: #fff;
+    border-radius: 0 10px 10px 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    position: relative;
+    min-width: 0;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 0;
+}
+
+#chat-box {
+    flex: 1 1 auto;
+    min-height: 0;
+    height: auto;
+    overflow-y: auto;
+    border: 1px solid #eee;
+    padding: 10px;
+    margin-bottom: 0;
+    background: #fafafa;
+    border-radius: 8px;
+}
+
+/* 头像和气泡结构样式 */
+.message {
+    display: flex;
+    align-items: flex-start;
+    margin: 16px 0;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+}
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 12px;
+    margin-left: 0;
+    flex-shrink: 0;
+    display: block;
+    background: var(--avatar-bot);
+}
+.message.user .avatar {
+    background: var(--avatar-user);
+    margin-left: 12px;
+    margin-right: 0;
+}
+.message.bot .avatar {
+    background: var(--avatar-bot);
+}
+.bubble {
+    background: var(--bubble-bot);
+    border-radius: 10px;
+    padding: 10px 16px;
+    max-width: 80%;
+    min-width: 60px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    word-break: break-word;
+    border: 1px solid var(--bubble-border);
+}
+.message.user .bubble {
+    background: var(--bubble-user);
+    border: 1px solid var(--main-blue);
+    margin-right: 12px;
+}
+.message.bot .bubble {
+    background: var(--bubble-bot);
+    border: 1px solid var(--bubble-border);
+    margin-left: 12px;
+}
+.nickname {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 2px;
+}
+.text {
+    font-size: 15px;
+    color: #222;
+    word-break: break-word;
+}
+/* markdown内容优化 */
+.message.bot .text h1,
+.message.bot .text h2,
+.message.bot .text h3 {
+    margin: 8px 0 4px 0;
+}
+.message.bot .text pre {
+    background: #f3f3f3;
+    border-radius: 6px;
+    padding: 8px;
+    overflow-x: auto;
+}
+.message.bot .text code {
+    background: #f3f3f3;
+    border-radius: 4px;
+    padding: 2px 4px;
+    font-size: 14px;
+}
+.message.bot .text table {
+    border-collapse: collapse;
+    margin: 8px 0;
+    width: 100%;
+}
+.message.bot .text th, .message.bot .text td {
+    border: 1px solid #ddd;
+    padding: 4px 8px;
+    text-align: left;
+}
+
+.input-area {
+    display: flex;
+    gap: 10px;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    padding: 16px 0 16px 0;
+    z-index: 10;
+    margin-bottom: 0;
+}
+
+input[type="text"] {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+button {
+    background-color: var(--main-blue);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background-color: var(--main-blue-hover);
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px 16px 20px;
+    border-bottom: 1px solid #394867;
+    margin-bottom: 10px;
+}
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo-img {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: #fff;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.logo-title {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #222;
+}
+#toggle-sidebar-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+#toggle-sidebar-btn:hover {
+    background: #394867;
+}
+
+/* 收缩状态 */
+.sidebar.collapsed {
+    width: 64px !important;
+    min-width: 64px;
+    max-width: 64px;
+    transition: width 0.2s;
+}
+.sidebar.collapsed .sidebar-header {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0 10px 0;
+}
+.sidebar.collapsed .logo-title,
+.sidebar.collapsed h2,
+.sidebar.collapsed #session-list,
+.sidebar.collapsed #new-session-btn {
+    display: none !important;
+}
+.sidebar.collapsed .logo-img {
+    margin: 0;
+}
+
+.rect-btn {
+    border-radius: 0 !important;
+    width: 100%;
+    margin: 0;
+    display: block;
+    background: var(--main-blue);
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: none;
+    transition: background 0.2s, color 0.2s;
+}
+.rect-btn:hover {
+    background: var(--main-blue-hover);
+    color: #fff;
+    border: none;
+}
+
+.thinking-dot {
+    display: inline-block;
+    animation: blink 1.2s infinite both;
+    font-size: 18px;
+    color: var(--main-blue);
+}
+.thinking-dot:nth-child(1) { animation-delay: 0s; }
+.thinking-dot:nth-child(2) { animation-delay: 0.2s; }
+.thinking-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes blink {
+    0%, 80%, 100% { opacity: 0.2; }
+    40% { opacity: 1; }
+}
+
+.option-area {
+    display: flex;
+    gap: 18px;
+    margin: 0 0 18px 0;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 2px;
+}
+.option-pill {
+    display: flex;
+    align-items: center;
+    background: #f5f7fa;
+    border-radius: 999px;
+    padding: 4px 18px;
+    font-size: 15px;
+    color: #333;
+    border: 1px solid #bbb;
+    cursor: pointer;
+    transition: background 0.2s, border 0.2s;
+    user-select: none;
+}
+.option-pill input[type="checkbox"] {
+    accent-color: var(--main-blue);
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+}
+.option-pill:hover {
+    background: #e0e0e0;
+    border-color: var(--main-blue-hover);
+}
+
+#voice-btn {
+    background: #fff;
+    color: var(--main-blue);
+    border: 1px solid var(--main-blue);
+    padding: 10px 16px;
+    font-size: 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-left: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+#voice-btn:hover {
+    background: var(--main-blue-hover);
+    color: #fff;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.25);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal {
+    background: var(--modal-bg);
+    border-radius: 10px;
+    padding: 32px 28px 24px 28px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    min-width: 320px;
+    max-width: 90vw;
+    text-align: center;
+    color: var(--text-main);
+    border: 1.5px solid var(--modal-border);
+}
+.modal h3 {
+    margin: 0 0 16px 0;
+    font-size: 20px;
+    color: #333;
+}
+#modal-session-title {
+    width: 90%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 18px;
+}
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+#modal-confirm-btn, #modal-cancel-btn,
+#rename-modal-confirm-btn, #rename-modal-cancel-btn,
+#delete-modal-confirm-btn, #delete-modal-cancel-btn,
+#clear-modal-confirm-btn, #clear-modal-cancel-btn {
+    padding: 8px 24px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background: var(--main-blue);
+    color: #fff;
+    transition: background 0.2s;
+}
+#modal-cancel-btn, #rename-modal-cancel-btn, #delete-modal-cancel-btn, #clear-modal-cancel-btn {
+    background: var(--cancel-btn);
+}
+#modal-confirm-btn:hover, #rename-modal-confirm-btn:hover, #delete-modal-confirm-btn:hover, #clear-modal-confirm-btn:hover {
+    background: var(--main-blue-hover);
+}
+#modal-cancel-btn:hover, #rename-modal-cancel-btn:hover, #delete-modal-cancel-btn:hover, #clear-modal-cancel-btn:hover {
+    background: var(--cancel-btn-hover);
+}
+
+.session-menu-btn {
+    background: none;
+    border: none;
+    color: var(--main-blue);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 8px;
+    margin-left: auto;
+    position: relative;
+}
+.session-menu-dropdown {
+    position: absolute;
+    right: 0;
+    top: 28px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    z-index: 10;
+    min-width: 100px;
+    display: none;
+    flex-direction: column;
+}
+.session-menu-dropdown button {
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 15px;
+    padding: 10px 16px;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.session-menu-dropdown button:hover {
+    background: var(--menu-hover);
+}
+
+/* 右侧天气栏样式优化 */
+.right-sidebar {
+    flex: 0 0 240px;
+    min-width: 200px;
+    max-width: 320px;
+    height: 100vh;
+    background: var(--sidebar-bg);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.05);
+    border-radius: 16px 0 0 16px;
+    padding-left: 0;
+    transition: width 0.3s;
+    z-index: 10;
+}
+.right-sidebar.collapsed {
+    width: 48px;
+    min-width: 48px;
+    overflow: hidden;
+}
+.right-sidebar .sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px 16px 16px;
+    border-bottom: 1px solid #394867;
+    margin-bottom: 10px;
+}
+.right-sidebar .logo-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #394867;
+}
+.right-sidebar .weather-search-content {
+    padding: 20px 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.right-sidebar.collapsed .weather-search-content {
+    display: none;
+}
+.right-sidebar #toggle-weather-sidebar-btn {
+    background: none;
+    border: none;
+    color: var(--main-blue);
+    font-size: 22px;
+    cursor: pointer;
+    padding: 0 4px;
+}
+.right-sidebar #weather-search-btn {
+    background: var(--main-blue);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-left: 8px;
+    transition: background 0.2s;
+}
+.right-sidebar #weather-search-btn:hover {
+    background: var(--main-blue-hover);
+}
+
+/* 右侧栏Tab样式 */
+.sidebar-tabs {
+    margin-bottom: 8px;
+}
+.sidebar-tab {
+    background: var(--sidebar-bg);
+    color: var(--text-main);
+    border: none;
+    border-radius: 6px 6px 0 0;
+    padding: 6px 18px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.sidebar-tab.active {
+    background: #fff;
+    color: var(--main-blue);
+    font-weight: bold;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.04);
+}
+.sidebar-tab-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 300px;
+}
+.route-search-content input {
+    border: 1px solid #b3d8f6;
+    border-radius: 6px;
+    font-size: 15px;
+}
+#route-search-btn {
+    background: var(--main-blue);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 4px;
+    transition: background 0.2s;
+}
+#route-search-btn:hover {
+    background: var(--main-blue-hover);
+}
+
+/* 右侧栏内容整体内边距 */
+.right-sidebar .sidebar-tabs,
+.right-sidebar .sidebar-tab-content {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* 输出气泡样式 */
+.right-sidebar .bubble-output {
+    width: 92%;
+    max-width: 92%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    background: #fff;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-top: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    color: var(--text-main);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/* 收缩时隐藏tab和内容，只显示顶部栏 */
+.right-sidebar.collapsed .sidebar-tabs,
+.right-sidebar.collapsed .sidebar-tab-content {
+    display: none !important;
+}
+
+.right-sidebar input[type="text"],
+.right-sidebar select {
+    width: 85%;
+    max-width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+.right-sidebar .weather-search-row {
+    display: flex;
+    align-items: center;
+    width: 0%;
+    margin: 0 auto;
+}
+.right-sidebar .weather-search-row input[type="text"] {
+    width: 72%;
+    min-width: 0;
+    height: 36px;
+    box-sizing: border-box;
+}
+.right-sidebar .weather-search-row button {
+    margin-left: 8px;
+    width: 60px;
+    height: 36px;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.right-sidebar .weather-search-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+}
+.right-sidebar #weather-result,
+.right-sidebar #route-result {
+    height: 750px;
+    overflow-y: auto;
+    padding-right: 4px;
+    box-sizing: border-box;
+}

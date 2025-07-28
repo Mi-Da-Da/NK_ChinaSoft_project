@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>NK-Traveler</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-area">
+                    <img src="/static/avatars/logo.png" alt="logo" class="logo-img" onerror="this.style.display='none'">
+                    <span class="logo-title">NK-Traveler</span>
+                </div>
+                <button id="toggle-sidebar-btn" title="收缩/展开">&#9776;</button>
+            </div>
+            <h2>会话列表</h2>
+            <ul id="session-list">
+                <!-- 会话列表由 JS 动态渲染，每项结构如下：
+                <li class="session-item">会话标题 <button class="delete-session-btn">删除</button></li>
+                -->
+            </ul>
+            <button id="new-session-btn">+ 新建会话</button>
+            <button id="clear-history-btn" class="rect-btn" style="margin-top:10px;">清空聊天记录</button>
+        </div>
+        <div class="chat-container">
+            <h1>NK-Traveler🐱</h1>
+            <div id="chat-box">
+                <!-- 对话内容由 JS 动态渲染 -->
+            </div>
+            <div class="input-area">
+                <input type="text" id="user-input" placeholder="请输入你的问题..." autocomplete="off">
+                <button onclick="sendMessage()">发送</button>
+                <button id="voice-btn" title="语音输入">🎤</button>
+            </div>
+            <div class="option-area">
+                <label class="option-pill">
+                    <input type="checkbox" id="option-rag">
+                    <span>RAG增强</span>
+                </label>
+                <label class="option-pill">
+                    <input type="checkbox" id="option-search">
+                    <span>联网搜索</span>
+                </label>
+            </div>
+        </div>
+        <div class="sidebar right-sidebar" id="weather-sidebar">
+            <div class="sidebar-header">
+                <span class="logo-title">实时助手</span>
+                <img src="/static/avatars/logo1.png" alt="icon" class="sidebar-toggle-icon" style="width:24px;height:24px;margin-right:6px;vertical-align:middle;" onerror="this.style.display='none'">
+                <button id="toggle-weather-sidebar-btn" title="收缩/展开">&#9776;</button>
+            </div>
+            <div class="sidebar-tabs" style="display: flex; gap: 8px; padding: 10px 16px 0 16px;">
+                <button class="sidebar-tab active" id="tab-weather">天气查询</button>
+                <button class="sidebar-tab" id="tab-route">路径规划</button>
+            </div>
+            <div class="weather-search-content sidebar-tab-content" id="weather-tab-content" style="padding-bottom: 10px;">
+                <div style="display: flex; align-items: center; gap: 8px; width: 100%;">
+                    <input type="text" id="weather-city-input" placeholder="请输入城市名" style="flex:1; padding: 6px; min-width: 0;">
+                    <button id="weather-search-btn">查询</button>
+                </div>
+                <div id="weather-result" style="margin-top: 16px; min-height: 24px; color: #333;"></div>
+            </div>
+            <div class="route-search-content sidebar-tab-content" id="route-tab-content" style="display:none; padding-bottom: 10px;">
+                <div style="display: flex; flex-direction: column; gap: 10px; width: 100%;">
+                    <input type="text" id="route-origin-input" placeholder="请输入起点" style="padding: 6px;">
+                    <input type="text" id="route-dest-input" placeholder="请输入终点" style="padding: 6px;">
+                    <select id="route-mode-input" style="padding: 6px; border-radius: 6px; border: 1px solid #b3d8f6; font-size: 15px;">
+                        <option value="driving">驾车</option>
+                        <option value="transit">公交</option>
+                        <option value="walking">步行</option>
+                        <option value="riding">骑行</option>
+                    </select>
+                    <button id="route-search-btn">查询路径</button>
+                </div>
+                <div id="route-result" style="margin-top: 16px; min-height: 24px; color: #333;"></div>
+            </div>
+        </div>
+    </div>
+    <div id="modal-overlay" class="modal-overlay" style="display:none;">
+      <div class="modal">
+        <h3>新建会话</h3>
+        <input type="text" id="modal-session-title" placeholder="请输入新会话标题" maxlength="20" />
+        <div class="modal-actions">
+          <button id="modal-confirm-btn">确定</button>
+          <button id="modal-cancel-btn">取消</button>
+        </div>
+      </div>
+    </div>
+    <div id="delete-modal-overlay" class="modal-overlay" style="display:none;">
+      <div class="modal">
+        <h3>确认删除</h3>
+        <div style="margin-bottom:18px;">确定要删除该会话及其所有消息吗？</div>
+        <div class="modal-actions">
+          <button id="delete-modal-confirm-btn">删除</button>
+          <button id="delete-modal-cancel-btn">取消</button>
+        </div>
+      </div>
+    </div>
+    <div id="clear-modal-overlay" class="modal-overlay" style="display:none;">
+      <div class="modal">
+        <h3>确认清空</h3>
+        <div style="margin-bottom:18px;">确定要清空所有会话和历史记录吗？</div>
+        <div class="modal-actions">
+          <button id="clear-modal-confirm-btn">清空</button>
+          <button id="clear-modal-cancel-btn">取消</button>
+        </div>
+      </div>
+    </div>
+    <div id="rename-modal-overlay" class="modal-overlay" style="display:none;">
+      <div class="modal">
+        <h3>重命名会话</h3>
+        <input type="text" id="rename-session-title" placeholder="请输入新会话标题" maxlength="20" />
+        <div class="modal-actions">
+          <button id="rename-modal-confirm-btn">确定</button>
+          <button id="rename-modal-cancel-btn">取消</button>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="/static/script.js"></script>
+</body>
+</html>
