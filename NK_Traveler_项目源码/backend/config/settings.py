@@ -8,7 +8,7 @@ class Config:
     AMAP_BASE_URL = "https://restapi.amap.com/v3"
     
     # 通义千问API配置
-    TONGYI_API_KEY = "sk-02ad1a5086e941c0ae80b541caf3acb0"
+    TONGYI_API_KEY = ""
     
     # 数据库配置
     DB_URI = "mysql+mysqlconnector://ttt:12345678@10.130.174.186:3306/traval_data"
